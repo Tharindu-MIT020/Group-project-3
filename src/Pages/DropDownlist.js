@@ -13,17 +13,17 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 200,
   },
 }));
 
 export default function ControlledOpenSelect() {
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
+  const [Sensor, setSensor] = React.useState('');
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setSensor(event.target.value);
   };
 
   const handleClose = () => {
@@ -35,27 +35,25 @@ export default function ControlledOpenSelect() {
   };
 
   return (
-    <div>
-      <Button className={classes.button} onClick={handleOpen}>
-        Open the select
-      </Button>
+    <div class='Sensors' align='center'>
+      
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Age</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label">Select Your Sensor</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={age}
+          value={Sensor}
           onChange={handleChange}
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={10}>Temperature sensor</MenuItem>
+          <MenuItem value={20}>Humidity sensors</MenuItem>
+          <MenuItem value={30}>Pressure sensors</MenuItem>
         </Select>
       </FormControl>
     </div>

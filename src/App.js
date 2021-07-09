@@ -9,13 +9,14 @@ function App() {
   return (
     <>
     <Router>
-
+    <Route path='/' component={DropDown}/>
       <Switch>
 
        
-          <Route path='/' component={DropDown}/>
+         
           <Route path='/chart' component={Chart}/>
           <Route path='/nav' component={ChartsNavbBar}/>
+          
 
 
       </Switch>
