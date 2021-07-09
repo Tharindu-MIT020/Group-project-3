@@ -1,0 +1,26 @@
+.card{
+
+  width: 300px;
+  padding: 1rem;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  margin: 8px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 10px;
+  /* border-radius: 10px; */
+}
+
+label{
+    font-size: 22px;
+    text-align: center;
+    color: rgb(0, 174, 255);
+    font-weight: bold;
+}
+
+p{
+    text-align: center;
+}
