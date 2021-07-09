@@ -10,16 +10,13 @@ function App() {
   return (
     <>
     <Router>
-    <Route path='/' component={DropDown}/>
+        <DropDown />
         <Online />
 
       <Switch>
 
-          <Route path='/chart' component={Chart}/>
-          <Route path='/nav' component={ChartsNavbBar}/>
-          
-
-
+          <Route path='/' component={Chart}/>
+             
       </Switch>
 
     </Router>
