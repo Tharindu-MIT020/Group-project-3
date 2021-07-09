@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
+import './Onlinestatus.css'
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -35,9 +36,9 @@ export default function ControlledOpenSelect() {
   };
 
   return (
-    <div class='Sensors' align='center'>
-      
-      <FormControl className={classes.formControl}>
+    <div>
+         <div class='Sensors' align='center'>
+        <FormControl className={classes.formControl}>
         <InputLabel id="demo-controlled-open-select-label">Select Your Sensor</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
@@ -56,6 +57,7 @@ export default function ControlledOpenSelect() {
           <MenuItem value={30}>Pressure sensors</MenuItem>
         </Select>
       </FormControl>
+    </div>
     </div>
   );
 }

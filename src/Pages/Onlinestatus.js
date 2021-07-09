@@ -4,7 +4,7 @@ import './Onlinestatus.css'
 function Onlinestatus() {
     return (
         <div className = "card">
-            <label>Today status</label>
+            <label className = "onine">Today status</label>
             <p>30</p>
         </div>
     )

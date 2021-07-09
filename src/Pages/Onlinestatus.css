@@ -14,13 +14,39 @@
   /* border-radius: 10px; */
 }
 
-label{
+.onine{
     font-size: 22px;
     text-align: center;
     color: rgb(0, 174, 255);
     font-weight: bold;
 }
 
+label{
+    text-align: center;
+}
+
+.l-header{
+    text-align: center;
+    font-size: 25px;
+    color: cornflowerblue;
+    font-weight: bold;
+}
+
 p{
     text-align: center;
+}
+
+h1{
+    color: rgb(0, 79, 153);
+    text-align: center;
+    padding-top: 5px;
+    margin-top: 0px;
+
+}
+
+.header{
+    background-color: bisque;
+    height: 60px;
+    margin: 0%;
+
 }
