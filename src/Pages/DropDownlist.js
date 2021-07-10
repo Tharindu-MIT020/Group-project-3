@@ -55,7 +55,7 @@ export default function ControlledOpenSelect() {
           <MenuItem value={10}>Temperature sensor</MenuItem>
           <MenuItem value={20}>Humidity sensors</MenuItem>
           <MenuItem value={30}>Pressure sensors</MenuItem>
-          <MenuItem value={40}>vibration sensors</MenuItem>
+          <MenuItem value={40}>Vibration sensors</MenuItem>
         </Select>
       </FormControl>
     </div>
