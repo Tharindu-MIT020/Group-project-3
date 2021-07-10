@@ -3,6 +3,7 @@ package net.codeJava.demofire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,13 +27,16 @@ public class ReadingService {
 
 	public List<Reading> getBySensor(Integer id) {
 		List<Reading> list ;
-		List<Reading> listnew = null;
-		list = repo.findAll();
+
+		List<Reading> listnew = new ArrayList<>();
+		list =repo.findAll();
 		for (Reading reading : list)
 		{
+
 			if (reading.getSensor_id()==id)
 			{
 				listnew.add(reading);
+
 			}
 		}
 
