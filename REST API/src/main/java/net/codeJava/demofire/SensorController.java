@@ -31,7 +31,7 @@ public class SensorController {
 		return service.listAll();
 		
 	}
-	
+	// get Sensor by Id
 	@GetMapping("/api/sensors/{id}")
 	public ResponseEntity<Sensor> getSensor(@PathVariable Integer id) {
 	try {
@@ -44,7 +44,7 @@ public class SensorController {
 		}
 	}
 	
-
+// add sensor
 	@PostMapping("/api/sensors/Add")
 	public void addSensor(@RequestBody Sensor sensor) {
 		
@@ -52,7 +52,7 @@ public class SensorController {
 		service.save(sensor);
 	}
 	
-	
+// update Sensor
 	@PutMapping("/api/sensors/Update/{id}")
 	public ResponseEntity<?> updateSensor(@RequestBody Sensor sensor,@PathVariable Integer id) {
 		
@@ -87,22 +87,6 @@ public class SensorController {
 	public void deleteSensor(@PathVariable Integer id) {
 		service.delete(id);
 	}
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
