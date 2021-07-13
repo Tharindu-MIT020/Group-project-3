@@ -1,5 +1,7 @@
-package net.codeJava.demofire;
+package net.codeJava.demofire.Controllers;
 
+import net.codeJava.demofire.Model.Sensor;
+import net.codeJava.demofire.Services.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

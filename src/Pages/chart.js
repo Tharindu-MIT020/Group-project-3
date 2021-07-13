@@ -1,71 +1,39 @@
-import React, { useState, useEffect } from "react";
-import { Bar, Line } from "react-chartjs-2";
-import axios from "axios";
-import { Paper } from '@material-ui/core';
+import React from "react";
+import { Line } from "react-chartjs-2";
 
+// const data = {
+//   labels: ["1", "2", "3", "4", "5", "6"],
+//   datasets: [
+//     {
+//       label: "# of Votes",
+//       data: [12, 19, 3, 5, 2, 3],
+//       fill: false,
+//       backgroundColor: "rgb(255, 99, 132)",
+//       borderColor: "rgba(255, 99, 132, 0.2)",
+//     },
+//   ],
+// };
 
-function Chart() {
+const options = {
+  scales: {
+    yAxes: [
+      {
+        ticks: {
+          beginAtZero: true,
+        },
+      },
+    ],
+  },
+};
 
-  const [data, setData] = useState([]);
- // const [total, setTotal] = useState(0);
-  const [posts, setPosts] = useState([]);
-
-  let packagename = [];
-  let packagerate = [];
- 
-  
-  useEffect(() => {
-
-    axios.get("http://localhost:5000/feedback").then(res => {
-      const feedback = res.data;
-      setPosts(feedback);
-      console.log(feedback);
-      feedback.forEach(record  => {
-        packagename.push(record .packagename);
-       //console.log(packagename);
-      
-       //setTotal(total+parseFloat(record.packagerate))  ; 
-        packagerate.push(record .packagerate);
-       
-      });
-
-
-
-
-      setData({
-        Data: {
-          labels: packagename,
-          datasets: [
-            {
-              label: "Package Feedback",
-              data: packagerate,
-              backgroundColor: [
-                "#3cb371",
-                "#0000FF",
-                "#9966FF",
-                "#4C4CFF",
-                "#00FFFF",
-                "#f990a7",
-                "#aad2ed",
-                "#FF00FF",
-                "Blue",
-                "Red"
-              ]
-            }
-          ]
-        }
-      });
-    });
-  },[]);
-  const paperStyle={padding :20,height:'80vh',width:1000, margin:"20px auto"}
-  return (
-    <div>
-      <Paper elevation={10} style={paperStyle}>
-      
-      <Line data={data.Data}  ></Line>
-      </Paper>
+const LineChart = (data, title) => (
+  <>
+    <div className="header">
+      <h1 className="title">title</h1>
+      <div className="links"></div>
     </div>
-  );
-}
+    <Line data={data} options={options} />
+  </>
+);
 
-export default Chart;
+export default LineChart;
