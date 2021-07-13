@@ -1,4 +1,4 @@
-package net.codeJava.demofire;
+package net.codeJava.demofire.Model;
 
 import javax.persistence.*;
 import java.io.Serializable;

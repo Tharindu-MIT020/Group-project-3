@@ -3,6 +3,9 @@ package net.codeJava.demofire;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import net.codeJava.demofire.Model.Reading;
+import net.codeJava.demofire.Services.ReadingService;
+import net.codeJava.demofire.Services.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +18,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@CrossOrigin(origins="http://localhost:3001")
+@CrossOrigin(origins="http://localhost:3002")
 public class ReadingController {
 
 
@@ -56,12 +59,12 @@ public class ReadingController {
 
 	@GetMapping("/api/readings/{id}")
 	public ResponseEntity<Reading> getReadings(@PathVariable Integer id) {
-	try {
-		Reading reading = service.get(id);
-		return new ResponseEntity<Reading>(reading, HttpStatus.OK);
+		try {
+			Reading reading = service.get(id);
+			return new ResponseEntity<Reading>(reading, HttpStatus.OK);
 
-	}catch (NoSuchElementException e) {
-		return new ResponseEntity<Reading>(HttpStatus.NOT_FOUND);
+		}catch (NoSuchElementException e) {
+			return new ResponseEntity<Reading>(HttpStatus.NOT_FOUND);
 
 		}
 	}
@@ -97,6 +100,9 @@ public class ReadingController {
 
 		if(reading.getValue()>30 ) {
 
+			try{
+
+
 			//check if temp array is empty
 			if (temp.isEmpty()) {
 
@@ -104,7 +110,7 @@ public class ReadingController {
 				temp.add(reading.getId());
 
 				//Sms Message
-				String MESSAGE="Sensor Alert Detected on Sensor "+  sensorService.get(Sid).getName() + ". Detected Value is Level is "+ reading.getValue()+" .";
+				String MESSAGE = "Sensor Alert Detected on Sensor " + sensorService.get(Sid).getName() + ". Detected Value is Level is " + reading.getValue() + " .";
 
 
 				//Authorized Message API Account
@@ -112,21 +118,17 @@ public class ReadingController {
 
 				//Send SMS
 
-				com.twilio.rest.api.v2010.account.Message message = com.twilio.rest.api.v2010.account.Message.creator(new PhoneNumber(TONO),new PhoneNumber(FROMNO), MESSAGE).create();
+				com.twilio.rest.api.v2010.account.Message message = com.twilio.rest.api.v2010.account.Message.creator(new PhoneNumber(TONO), new PhoneNumber(FROMNO), MESSAGE).create();
 
 				//print message ID
 				System.out.println(message.getSid());
 
 
-
-
 				//Email Body
-				EMAILBODY="<h1 style=\"color:red;\">Sensor Alert Detected</h1><h2>Sensor ID : "+sensorService.get(reading.getSensor_id()).getName()+"<br> Value of : "+ reading.getValue()+".";
+				EMAILBODY = "<h1 style=\"color:red;\">Sensor Alert Detected</h1><h2>Sensor ID : " + sensorService.get(reading.getSensor_id()).getName() + "<br> Value of : " + reading.getValue() + ".";
 				// send email
 				new EmailGenerator(EMAILRECIEVER, "Fire Alert", EMAILBODY);
-			}
-
-			else {
+			} else {
 
 
 				for (int i : temp) {
@@ -139,7 +141,6 @@ public class ReadingController {
 
 
 				}
-
 
 
 				if (stat) {
@@ -159,28 +160,35 @@ public class ReadingController {
 					System.out.println(message.getSid());
 
 
-
-
 					//Email Body
-					EMAILBODY="<h1 style=\"color:red;\">Sensor Alert Detected</h1><h2>Sensor ID : "+sensorService.get(reading.getSensor_id()).getName()+"<br> Value of : "+ reading.getValue()+".";
+					EMAILBODY = "<h1 style=\"color:red;\">Sensor Alert Detected</h1><h2>Sensor ID : " + sensorService.get(reading.getSensor_id()).getName() + "<br> Value of : " + reading.getValue() + ".";
 
 					// send email
 					new EmailGenerator(EMAILRECIEVER, "Fire Alert", EMAILBODY);
 
 
-
 				}
 
 			}
-		}
+		}catch (Exception e){
+				System.out.println(e);
+
+				//Email Body
+				EMAILBODY = "<h1 style=\"color:red;\">Sensor Alert Detected</h1><h2>Sensor ID : " + sensorService.get(reading.getSensor_id()).getName() + "<br> Value of : " + reading.getValue() + ".";
+				// send email
+				new EmailGenerator(EMAILRECIEVER, "Fire Alert", EMAILBODY);
+
+			}
+			}
+
 	}
 
-	
+
 	@DeleteMapping("/api/readings/Delete/{id}")
 	public void deleteReading(@PathVariable Integer id) {
 		service.delete(id);
 	}
-	
 
-	
+
+
 }

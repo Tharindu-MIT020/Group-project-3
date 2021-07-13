@@ -33,7 +33,7 @@ public class EmailGenerator {
 		try {
 
 			//set properties
-			
+
 			Properties properties = new Properties();
 			properties.put("mail.smtp.user", senderEmail);
 			properties.put("mail.smtp.host", Server);
@@ -46,27 +46,27 @@ public class EmailGenerator {
 			SecurityManager security = System.getSecurityManager();
 
 			//generate a authenticator
-			
+
 			Authenticator authentiator = new Authenticator();
-			
+
 			//get a session
-			
+
 			Session session = Session.getInstance(properties, authentiator);
-			
+
 			//generate message instance from session
-			
+
 			MimeMessage msg = new MimeMessage(session);
-			
+
 			//set message properties
-			
+
 			msg.setContent(this.Body, "text/html");
 			msg.setSubject(this.Subject);
 			msg.setFrom(new InternetAddress(senderEmail));
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(this.receiverEmail));
-			
+
 			//send Email
 			Transport.send(msg);
-			
+
 			System.out.println("Email Sent");
 		}
 
@@ -75,13 +75,13 @@ public class EmailGenerator {
 		}
 
 	}
-	
-	
-	
-//authenticator Class for sender email authentication
+
+
+
+	//authenticator Class for sender email authentication
 	public class Authenticator extends javax.mail.Authenticator {
 		public PasswordAuthentication getPasswordAuthentication() {
-			
+
 			//return authentication result status
 			return new PasswordAuthentication(senderEmail, senderPassword);
 		}

@@ -1,10 +1,11 @@
-package net.codeJava.demofire;
+package net.codeJava.demofire.Services;
 
-import java.util.List;
-
-
+import net.codeJava.demofire.Model.Sensor;
+import net.codeJava.demofire.Repositories.SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SensorService {

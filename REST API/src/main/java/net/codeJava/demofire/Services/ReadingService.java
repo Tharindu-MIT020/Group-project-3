@@ -1,5 +1,7 @@
-package net.codeJava.demofire;
+package net.codeJava.demofire.Services;
 
+import net.codeJava.demofire.Repositories.ReadingRepository;
+import net.codeJava.demofire.Model.Reading;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
