@@ -1,0 +1,49 @@
+.main{
+    justify-content: center;
+}
+.main2{
+     display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+}
+
+
+.img11{
+
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.content{
+    margin-top: 15%;   
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: relative; 
+    width: 500px;
+    height: 80px;
+    /* margin: 50px auto; */
+    /* padding: 1ex 0 10px 0; */
+    /* background-color: rgba(0, 0, 0, 0.555); */
+    border-radius: 10px;
+    box-shadow:  5px 5px 20px 0 rgb(10, 10, 10);
+    
+}
+button{
+    width: 150px;
+    height: 50%;
+    margin: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: rgb(50, 47, 209);
+    color: white;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: yellowgreen;
+    color: black;
+    transition: 0.8s;
+}
